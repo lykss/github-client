@@ -5,6 +5,7 @@ import {
   Text
 } from 'react-native';
 import NavigationBar from './NavigationBar';
+import HTTPUtils from './HTTPUtils';
 
 const FETCH_URL = 'http://rap.taobao.org/mockjsdata/11793/test';
 const SUBMIT_URL = 'http://rap.taobao.org/mockjsdata/11793/submit';
@@ -18,41 +19,22 @@ export default class FetchTest extends Component {
   }
 
   onLoad(url) {
-    fetch(url)
-      .then(response => response.json())
-      .then(result => {
-        this.setState({
-          result: JSON.stringify(result)
-        })
-      })
-      .catch(error => {
-        this.setState({
-          result: JSON.stringify(error)
-        })
-      })
+    HTTPUtils.get(url)
+      .then(res => this.setState({
+        result: JSON.stringify(res)
+      }))
+      .catch(error => this.setState({
+        result: JSON.stringify(error)
+      }))
   }
 
   onSubmit(url, data) {
-    let options = {
-      method: 'POST',
-      header: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    };
-
-    fetch(url, options)
-      .then(response => response.json())
-      .then(result => {
-        this.setState({
-          result: JSON.stringify(result)
-        })
-      })
+    HTTPUtils.post(url, data)
+      .then(res => this.setState({
+        result: JSON.stringify(res)
+      }))
       .catch(error => {
-        this.setState({
-          result: JSON.stringify(error)
-        })
+        result: JSON.stringify(error)
       })
   }
 
