@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  TouchableOpacity,
+  StyleSheet,
+  Image
 } from 'react-native';
+import NavigationBar from './NavigationBar';
 
 export default class Girl extends Component {
   constructor(props) {
@@ -11,9 +14,34 @@ export default class Girl extends Component {
     this.state = {};
   }
 
+  renderBtn(image) {
+    return (
+      <TouchableOpacity
+        onPress = {() => this.props.navigator.pop()}
+      >
+        <Image style = {styles.icon} source = {image}></Image>
+      </TouchableOpacity>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <NavigationBar
+          title = {'Girl'}
+          style = {{
+            backgroundColor: '#EE6363'
+          }}
+          statusBar = {{
+            backgroundColor: '#EE6363'
+          }}
+          leftBtn = {
+            this.renderBtn(require('./res/images/ic_arrow_back_white_36pt.png'))
+          }
+          rightBtn = {
+            this.renderBtn(require('./res/images/ic_star.png'))
+          }
+        />
         <Text style={styles.text}>I am Girl.</Text>
         <Text style={styles.text}>我收到了男孩送的：{this.props.word}</Text>
         <Text style={styles.text}
@@ -30,10 +58,13 @@ export default class Girl extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'red'
   },
   text: {
     fontSize: 20
+  },
+  icon: {
+    margin: 5,
+    width: 22,
+    height: 22
   }
 });
