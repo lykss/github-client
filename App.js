@@ -14,7 +14,8 @@ import {
 } from 'react-native';
 import Navigator from 'react-native-deprecated-custom-components';
 import TabNavigator from 'react-native-tab-navigator';
-import Boy from './Boy'
+import Boy from './Boy';
+import ListViewTest from './ListViewTest';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -35,7 +36,8 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style = {styles.container}>
-        <Navigator.Navigator
+        <ListViewTest/>
+        {/*<Navigator.Navigator
           initialRoute = {{
             component: Boy
           }}
@@ -43,7 +45,7 @@ export default class App extends Component<Props> {
             let Component = route.component;
             return <Component navigator={navigator} {...route.params}/>
           }}
-        />
+        />*/}
         {/*<TabNavigator>
           <TabNavigator.Item
             selected = {this.state.selectedTab === 'tb_popular'}
