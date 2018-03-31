@@ -16,6 +16,7 @@ import Navigator from 'react-native-deprecated-custom-components';
 import TabNavigator from 'react-native-tab-navigator';
 import Boy from './Boy';
 import ListViewTest from './ListViewTest';
+import FetchTest from './FetchTest';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -36,7 +37,8 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style = {styles.container}>
-        <ListViewTest/>
+        <FetchTest/>
+        {/*<ListViewTest/>*/}
         {/*<Navigator.Navigator
           initialRoute = {{
             component: Boy
