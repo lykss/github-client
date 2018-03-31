@@ -4,7 +4,7 @@ import {
   View,
   Text
 } from 'react-native';
-import NavigationBar from './NavigationBar';
+import NavigationBar from './js/common/NavigationBar';
 import HTTPUtils from './HTTPUtils';
 
 const FETCH_URL = 'http://rap.taobao.org/mockjsdata/11793/test';
